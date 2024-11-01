@@ -21,6 +21,8 @@ def slugify(title):
     """Convert the page title to a filename-friendly slug."""
     if title.lower() == "home":  # Ensure 'Home' becomes 'index.html'
         return "index.html"
+        # strip() and lower() are string methods that when combined remove all white space
+    # and ensure all characters are lowercase.
     return re.sub(r'\W+', '-', title.strip().lower()) + ".html"
 
 # Navigation function.
@@ -39,7 +41,7 @@ def create_html_file(title, titles, output_dir="build"):
     """Generate and write HTML content based on the page title."""
     filename = slugify(title)
     nav = generate_nav(titles, active_title=title)
-
+#lower() is used in the below block to make the title lowercase.
     html_content = f"""
     <!DOCTYPE html>
     <html lang="en">
@@ -71,6 +73,7 @@ def create_html_file(title, titles, output_dir="build"):
 
     # Create CSS file function
 
+# uses pass for the program to ignore create_css_file()
 def create_css_file():
     pass
 
@@ -78,6 +81,7 @@ def create_css_file():
 
 def main():
     """Main function to generate pages and styles. MUST HAVE HOME!!!"""
+    # A dictionary with page titles.
     titles = ["Home", "School", "Work", "Hobbies"]
 
     # Create HTML files for each title
