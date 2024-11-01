@@ -1,7 +1,22 @@
-import os #put oss module explanation here
-import re # put re module explanation here
+import os 
+# Operating system function
+'''The os module provides functions that interact with the computer's operating
+system. The Geeks for Geeks site lists a few functions contained in the os
+module, such as getting the current working directory with os.getcwd() or
+making a directory with os.makedir() or os.makedirs().'''
+import re 
+# Regular expression function
+'''the re module provides regular expression matching operations like those
+in perl, according to python's 3.13.0 documentation. Regular expressions use /
+to indicate a special form or allow special characters to be used without invoking
+their meaning. One thing regular expressions can do is search for a sequence of 
+characters and return it with a Match object. They can also return the group of
+text the match came from or the first mention of a character.'''
 
 # Slugify function.
+'''A slug is the unique part of a URL that helps act as a unique identifier for
+the page. The slugify function uses the page title to make a slug that works as
+a file name by replacing all spaces with hyphens.'''
 def slugify(title):
     """Convert the page title to a filename-friendly slug."""
     if title.lower() == "home":  # Ensure 'Home' becomes 'index.html'
