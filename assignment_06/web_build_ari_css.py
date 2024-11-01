@@ -20,6 +20,9 @@ def slugify(title):
     """Convert the page title to a filename-friendly slug."""
     if title.lower() == "home":  # Ensure 'Home' becomes 'index.html'
         return "index.html"
+    # strip() and lower() are string methods that when combined remove all white space
+    # and ensure all characters are lowercase.
+    # Codes a regular expression that is used to remove white space and replace it with hyphens.
     return re.sub(r'\W+', '-', title.strip().lower()) + ".html"
 
 # Navigation function.
@@ -38,7 +41,7 @@ def create_html_file(title, titles, output_dir="build"):
     """Generate and write HTML content based on the page title."""
     filename = slugify(title)
     nav = generate_nav(titles, active_title=title)
-
+#lower() is used in the below block to make the title lowercase. 
     html_content = f"""
     <!DOCTYPE html>
     <html lang="en">
@@ -61,11 +64,13 @@ def create_html_file(title, titles, output_dir="build"):
     """
 
     output_path = os.path.join(output_dir, filename)
+    #This module creates a directory
     os.makedirs(output_dir, exist_ok=True)  # Ensure the directory exists
-
+# opens the output path as file 
     with open(output_path, 'w') as file:
+        #writes a file
         file.write(html_content)
-
+# An f string that tells the user the name of the file made and which directory it was put in.
     print(f"Created {filename} in the '{output_dir}' directory.")
 
     # Create CSS file function
@@ -125,9 +130,11 @@ def create_css_file(output_dir="build"):
 
 def main():
     """Main function to generate pages and styles. MUST HAVE HOME!!!"""
+    #A dictionary of page titles.
     titles = ["Home", "School", "Work", "Hobbies"]
 
     # Create HTML files for each title
+    # Example of a for loop.
     for title in titles:
         create_html_file(title, titles)
 
